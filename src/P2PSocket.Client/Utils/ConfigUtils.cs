@@ -45,6 +45,7 @@ namespace P2PSocket.Client.Utils
                                             {
                                                 Global.ServerAddress = ipStr[0];
                                                 Global.ServerPort = Convert.ToInt32(ipStr[1]);
+                                                P2PTcpClient.Proxy.Address.Add(Global.ServerAddress);
                                             }
                                         }
                                         break;
@@ -64,6 +65,27 @@ namespace P2PSocket.Client.Utils
                                                     Global.AllowPort.Add(port);
                                                 }
                                             }
+                                        };
+                                        break;
+                                    case "proxy_ip":
+                                        {
+                                            string[] portList = splitStr[1].Split(':');
+                                            if (portList.Length == 3)
+                                            {
+                                                P2PTcpClient.Proxy.ProxyType = portList[0];
+                                                P2PTcpClient.Proxy.IP = portList[1];
+                                                P2PTcpClient.Proxy.Port = Convert.ToInt32(portList[2]);
+                                            }
+                                        }
+                                        break;
+                                    case "proxy_username":
+                                        {
+                                            P2PTcpClient.Proxy.UserName = splitStr[1];
+                                        }
+                                        break;
+                                    case "proxy_password":
+                                        {
+                                            P2PTcpClient.Proxy.Password = splitStr[1];
                                         }
                                         break;
                                 }
