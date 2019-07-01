@@ -18,10 +18,26 @@ namespace P2PSocket.Server
 
         }
 
+        public void Start(int serverPort, PortMapItem[] portMaps)
+        {
+            Global.LocalPort = serverPort;
+            if (portMaps != null)
+            {
+                foreach (var portMap in portMaps)
+                {
+                    if (!Global.PortMapList.Any(t => t.LocalPort == portMap.LocalPort))
+                    {
+                        Global.PortMapList.Add(portMap);
+                    }
+                }
+            }
+            InitGlobal();
+            P2PServer.StartServer();
+        }
         public void Start()
         {
-            ConsoleUtils.WriteLine($"P2PServer - > 程序版本:{Global.SoftVerSion}");
-            ConsoleUtils.WriteLine($"P2PServer - > 通讯协议:{Global.DataVerSion}");
+            ConsoleUtils.Write($"P2PServer - > 程序版本:{Global.SoftVerSion}");
+            ConsoleUtils.Write($"P2PServer - > 通讯协议:{Global.DataVerSion}");
             //读取配置文件
             if (ConfigUtils.IsExistConfig())
             {
@@ -35,7 +51,7 @@ namespace P2PSocket.Server
             }
             else
             {
-                ConsoleUtils.WriteLine("启动失败，配置文件不存在.");
+                ConsoleUtils.Write("启动失败，配置文件不存在.");
             }
         }
         /// <summary>
@@ -51,11 +67,13 @@ namespace P2PSocket.Server
         /// </summary>
         public void InitCommandList()
         {
+            //获取P2PCommand的子类
             Type[] commandList = Assembly.GetExecutingAssembly().GetTypes()
                 .Where(t => typeof(P2PCommand).IsAssignableFrom(t) && !t.IsAbstract)
                 .ToArray();
             foreach (Type type in commandList)
             {
+                //去除没有CommandFlag的Attribute的类
                 IEnumerable<Attribute> attributes = type.GetCustomAttributes();
                 if (!attributes.Any(t => t is CommandFlag))
                 {

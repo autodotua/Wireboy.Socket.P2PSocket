@@ -6,6 +6,10 @@
     <TargetLatestRuntimePatch>false</TargetLatestRuntimePatch>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>$(SolutionDir)\output\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\P2PSocekt.Core\P2PSocket.Core.csproj" />
     <ProjectReference Include="..\P2PSocket.Client\P2PSocket.Client.csproj" />

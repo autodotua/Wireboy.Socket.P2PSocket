@@ -10,18 +10,18 @@ namespace P2PSocket.StartUp
         static void Main(string[] args)
         {
             bool flag = false;
-            if (File.Exists("P2PSocket/P2PSocket.Server.dll"))
+            if (File.Exists("P2PSocket.Server.dll"))
             {
-                Assembly assembly = Assembly.LoadFrom(AppDomain.CurrentDomain.BaseDirectory + "/P2PSocket/P2PSocket.Server.dll");
+                Assembly assembly = Assembly.LoadFrom(AppDomain.CurrentDomain.BaseDirectory + "/P2PSocket.Server.dll");
                 assembly = AppDomain.CurrentDomain.Load(assembly.FullName);
                 object obj = assembly.CreateInstance("P2PSocket.Server.CoreModule");
                 MethodInfo method = obj.GetType().GetMethod("Start");
                 method.Invoke(obj, null);
                 flag = true;
             }
-            if (File.Exists("P2PSocket/P2PSocket.Client.dll"))
+            if (File.Exists("P2PSocket.Client.dll"))
             {
-                Assembly assembly = Assembly.LoadFrom(AppDomain.CurrentDomain.BaseDirectory + "/P2PSocket/P2PSocket.Client.dll");
+                Assembly assembly = Assembly.LoadFrom(AppDomain.CurrentDomain.BaseDirectory + "/P2PSocket.Client.dll");
                 assembly = AppDomain.CurrentDomain.Load(assembly.FullName);
 
                 object obj = assembly.CreateInstance("P2PSocket.Client.CoreModule");

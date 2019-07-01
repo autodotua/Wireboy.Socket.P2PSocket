@@ -14,7 +14,7 @@ namespace P2PSocket.Core.Utils
         private static ConcurrentQueue<string> m_consoleLogList = new ConcurrentQueue<string>();
         private static TaskFactory m_taskFactory = new TaskFactory();
 
-        private static void WriteConsole(string log)
+        public static void Write(string log)
         {
             m_consoleLogList.Enqueue(log);
             if (m_curConsoleTask == null)
@@ -27,7 +27,19 @@ namespace P2PSocket.Core.Utils
                     }
                 }
             }
+            NewLine?.Invoke(null, new NewLineEventArgs(log));
         }
+        public static event EventHandler<NewLineEventArgs> NewLine;
+        public  class NewLineEventArgs:EventArgs
+        {
+            public NewLineEventArgs(string content)
+            {
+                Content = content;
+            }
+
+            public string Content { get;  }
+        }
+
         private static void DoWriteConsole()
         {
             do
@@ -47,9 +59,9 @@ namespace P2PSocket.Core.Utils
             } while (m_consoleLogList.Count > 0);
             m_curConsoleTask = null;
         }
-        public static void WriteLine(string log, object arg0 = null, object arg1 = null, object arg2 = null)
-        {
-            ConsoleUtils.WriteConsole(string.Format(log, arg0, arg1, arg2));
-        }
+        //public static void WriteLine(string log, object arg0 = null, object arg1 = null, object arg2 = null)
+        //{
+        //    ConsoleUtils.WriteConsole(string.Format(log, arg0, arg1, arg2));
+        //}
     }
 }

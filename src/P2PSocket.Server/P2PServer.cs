@@ -89,7 +89,7 @@ namespace P2PSocket.Server
                 }
                 catch
                 {
-                    ConsoleUtils.WriteLine($"端口{Global.LocalPort}监听失败.");
+                    ConsoleUtils.Write($"端口{Global.LocalPort}监听失败.");
                 }
             }
         }
@@ -103,7 +103,7 @@ namespace P2PSocket.Server
                 {
                     TcpListener listener = new TcpListener(IPAddress.Any, item.LocalPort);
                     listener.Start();
-                    ConsoleUtils.WriteLine($"Server:端口映射：{item.LocalPort}->{item.RemoteAddress}:{item.RemotePort}");
+                    ConsoleUtils.Write($"Server:端口映射：{item.LocalPort}->{item.RemoteAddress}:{item.RemotePort}");
                     Global.TaskFactory.StartNew(() =>
                     {
                         while (true)
@@ -145,13 +145,13 @@ namespace P2PSocket.Server
                 }
                 catch
                 {
-                    ConsoleUtils.WriteLine($"Server:端口映射{item.LocalPort}->{item.RemoteAddress}:{item.RemotePort}创建失败.");
+                    ConsoleUtils.Write($"Server:端口映射{item.LocalPort}->{item.RemoteAddress}:{item.RemotePort}创建失败.");
                     throw new Exception($"端口映射{item.LocalPort}->{item.RemoteAddress}:{item.RemotePort}创建失败.");
                 }
             }
             else
             {
-                ConsoleUtils.WriteLine($"Server:端口必须大于1000,当前端口：{item.LocalPort}");
+                ConsoleUtils.Write($"Server:端口必须大于1000,当前端口：{item.LocalPort}");
             }
         }
 
@@ -168,7 +168,7 @@ namespace P2PSocket.Server
                 {
                     TcpListener listener = new TcpListener(IPAddress.Any, item.LocalPort);
                     listener.Start();
-                    ConsoleUtils.WriteLine($"Server:端口映射：{item.LocalPort}->{item.RemoteAddress}:{item.RemotePort}");
+                    ConsoleUtils.Write($"Server:端口映射：{item.LocalPort}->{item.RemoteAddress}:{item.RemotePort}");
                     Global.TaskFactory.StartNew(() =>
                     {
                         while (true)
@@ -199,13 +199,13 @@ namespace P2PSocket.Server
                 }
                 catch
                 {
-                    ConsoleUtils.WriteLine($"Server:端口映射{item.LocalPort}->{item.RemoteAddress}:{item.RemotePort}创建失败.");
+                    ConsoleUtils.Write($"Server:端口映射{item.LocalPort}->{item.RemoteAddress}:{item.RemotePort}创建失败.");
                     throw new Exception($"端口映射{item.LocalPort}->{item.RemoteAddress}:{item.RemotePort}创建失败.");
                 }
             }
             else
             {
-                ConsoleUtils.WriteLine($"Server:端口必须大于1000,当前端口：{item.LocalPort}");
+                ConsoleUtils.Write($"Server:端口必须大于1000,当前端口：{item.LocalPort}");
             }
         }
 

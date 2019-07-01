@@ -13,8 +13,8 @@ namespace P2PSocket.Core.Models
         public P2PTcpClient(IPEndPoint localEP) : base(localEP) { }
         public P2PTcpClient(string hostname, int port) : base(hostname, port)
         {
-            m_remoteEndPoint = Client.RemoteEndPoint.ToString();
-            m_localEndPoint = Client.LocalEndPoint.ToString();
+            RemoteEndPoint = Client.RemoteEndPoint.ToString();
+            LocalEndPoint = Client.LocalEndPoint.ToString();
         }
         public P2PTcpClient(TcpClient tcpClient) : base()
         {
@@ -33,8 +33,8 @@ namespace P2PSocket.Core.Models
         {
             Client = socket;
             Active = Client.Connected;
-            m_remoteEndPoint = socket.RemoteEndPoint.ToString();
-            m_localEndPoint = socket.LocalEndPoint.ToString();
+            RemoteEndPoint = socket.RemoteEndPoint.ToString();
+            LocalEndPoint = socket.LocalEndPoint.ToString();
         }
 
 
@@ -42,21 +42,7 @@ namespace P2PSocket.Core.Models
         public P2PTcpClient ToClient { set; get; }
         public bool IsAuth { set; get; } = false;
 
-        String m_remoteEndPoint = "";
-        String m_localEndPoint = "";
-        public String RemoteEndPoint
-        {
-            get
-            {
-                return m_remoteEndPoint;
-            }
-        }
-        public String LocalEndPoint
-        {
-            get
-            {
-                return m_localEndPoint;
-            }
-        }
+        public String RemoteEndPoint { get; } = "";
+        public String LocalEndPoint { get; } = "";
     }
 }

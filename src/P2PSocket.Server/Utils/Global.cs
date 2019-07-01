@@ -19,7 +19,7 @@ namespace P2PSocket.Server
         /// <summary>
         ///     配置文件路径
         /// </summary>
-        public const string ConfigFile = @"P2PSocket/Server.ini";
+        public const string ConfigFile = @"Server.ini";
         /// <summary>
         ///     服务端口
         /// </summary>

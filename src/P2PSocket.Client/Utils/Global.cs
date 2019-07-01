@@ -20,7 +20,7 @@ namespace P2PSocket.Client
         /// <summary>
         ///     配置文件路径
         /// </summary>
-        public const string ConfigFile = @"P2PSocket/Client.ini";
+        public const string ConfigFile = @"Client.ini";
         /// <summary>
         ///     服务器Tcp连接
         /// </summary>

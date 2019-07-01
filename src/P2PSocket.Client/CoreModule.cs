@@ -15,10 +15,35 @@ namespace P2PSocket.Client
         public CoreModule()
         {
         }
+        public void Start(string serverAddress,int serverPort,string clientName,int[] allowPorts, PortMapItem[] portMaps)
+        {
+            Global.ServerAddress = serverAddress;
+            Global.ServerPort = serverPort;
+            Global.ClientName = clientName;
+            if (allowPorts != null)
+            {
+                foreach (var port in allowPorts)
+                {
+                    Global.AllowPort.Add(port);
+                }
+            }
+            if (portMaps != null)
+            {
+                foreach (var portMap in portMaps)
+                {
+                    if (!Global.PortMapList.Any(t => t.LocalPort == portMap.LocalPort))
+                    {
+                        Global.PortMapList.Add(portMap);
+                    }
+                }
+            }
+            InitGlobal();
+            P2PClient.StartServer();
+        }
         public void Start()
         {
-            ConsoleUtils.WriteLine($"P2PClient - > 程序版本:{Global.SoftVerSion}");
-            ConsoleUtils.WriteLine($"P2PClient - > 通讯协议:{Global.DataVerSion}");
+            ConsoleUtils.Write($"P2PClient - > 程序版本:{Global.SoftVerSion}");
+            ConsoleUtils.Write($"P2PClient - > 通讯协议:{Global.DataVerSion}");
             //读取配置文件
             if (ConfigUtils.IsExistConfig())
             {
@@ -32,7 +57,7 @@ namespace P2PSocket.Client
             }
             else
             {
-                ConsoleUtils.WriteLine($"启动失败，配置文件不存在.{AppDomain.CurrentDomain.BaseDirectory}/{ Global.ConfigFile}");
+                ConsoleUtils.Write($"启动失败，配置文件不存在");
             }
         }
         /// <summary>

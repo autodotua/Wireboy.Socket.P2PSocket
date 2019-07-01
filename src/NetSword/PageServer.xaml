@@ -1,0 +1,35 @@
+﻿<Page x:Class="NetSword.PageServer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NetSword"
+      xmlns:flat="clr-namespace:FzLib.Control.FlatStyle;assembly=FzWpfControlLib"
+      mc:Ignorable="d" 
+      DataContext="{Binding RelativeSource={RelativeSource Self}}"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageServer">
+
+    <Viewbox MaxHeight="360">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="grd">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="8"/>
+                <ColumnDefinition Width="144"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+            <TextBlock VerticalAlignment="Center" Text="服务器端口"/>
+            <TextBox Grid.Column="2" Text="{Binding Config.Port, UpdateSourceTrigger=PropertyChanged}"/>
+            
+            <flat:Button x:Name="btnLogin" IsDefault="True" Grid.Row="99" Grid.ColumnSpan="3" Click="StartBtnClick" Content="登录"/>
+
+        </Grid>
+
+    </Viewbox>
+
+</Page>

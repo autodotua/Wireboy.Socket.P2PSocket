@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2016
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P2PSocket.Test", "P2PSocket.Test\P2PSocket.Test.csproj", "{8861BBCD-644F-49D1-848B-A91A79BBC48D}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P2PSocket.ConsoleTest", "P2PSocket.ConsoleTest\P2PSocket.ConsoleTest.csproj", "{B6B9ECAE-89F3-4F49-BA66-72F82015757D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P2PSocket.StartUp", "P2PSocket.StartUp\P2PSocket.StartUp.csproj", "{0111B327-91D2-465D-93C2-7EF0BA2C2FB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetSword", "NetSword\NetSword.csproj", "{0535547B-1344-4283-8593-97AF97785261}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{0111B327-91D2-465D-93C2-7EF0BA2C2FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0111B327-91D2-465D-93C2-7EF0BA2C2FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0111B327-91D2-465D-93C2-7EF0BA2C2FB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0535547B-1344-4283-8593-97AF97785261}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0535547B-1344-4283-8593-97AF97785261}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0535547B-1344-4283-8593-97AF97785261}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0535547B-1344-4283-8593-97AF97785261}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
