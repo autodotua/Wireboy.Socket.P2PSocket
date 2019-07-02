@@ -8,7 +8,24 @@ using System.Threading.Tasks;
 
 namespace NetSword
 {
-    public class ServeConfig : FzLib.DataStorage.Serialization.JsonSerializationBase
+    public class Config : FzLib.DataStorage.Serialization.JsonSerializationBase
+    {
+        private static Config instance;
+        public static Config Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = TryOpenOrCreate<Config>("Config.json");
+                }
+                return instance;
+            }
+        }
+
+        public int LastMode { get; set; } = 2;
+    }
+            public class ServeConfig : FzLib.DataStorage.Serialization.JsonSerializationBase
     {
         private static ServeConfig instance;
         public static ServeConfig Instance

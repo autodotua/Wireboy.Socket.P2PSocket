@@ -7,6 +7,7 @@
       xmlns:flat="clr-namespace:FzLib.Control.FlatStyle;assembly=FzWpfControlLib"
       mc:Ignorable="d" 
       DataContext="{Binding RelativeSource={RelativeSource Self}}"
+     Loaded="Page_Loaded"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageServer">
 
@@ -25,7 +26,7 @@
             </Grid.RowDefinitions>
             <TextBlock VerticalAlignment="Center" Text="服务器端口"/>
             <TextBox Grid.Column="2" Text="{Binding Config.Port, UpdateSourceTrigger=PropertyChanged}"/>
-            
+
             <flat:Button x:Name="btnLogin" IsDefault="True" Grid.Row="99" Grid.ColumnSpan="3" Click="StartBtnClick" Content="登录"/>
 
         </Grid>

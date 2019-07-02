@@ -34,7 +34,7 @@ namespace P2PSocket.Client
             try
             {
                 P2PTcpClient p2PTcpClient = new P2PTcpClient(Global.ServerAddress, Global.ServerPort);
-                ConsoleUtils.Write($"{DateTime.Now.ToString("[HH:mm:ss]")}服务器{Global.ServerAddress}:{Global.ServerPort}连接成功.");
+                ConsoleUtils.Write($"服务器{Global.ServerAddress}:{Global.ServerPort}连接成功.");
                 p2PTcpClient.IsAuth = true;
                 Global.P2PServerTcp = p2PTcpClient;
                 //接收数据

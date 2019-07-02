@@ -66,6 +66,8 @@ namespace P2PSocket.Server
                 {
                     TcpListener listener = new TcpListener(IPAddress.Any, Global.LocalPort);
                     listener.Start();
+                    ConsoleUtils.Write($"开始监听{Global.LocalPort}端口.");
+
                     Global.TaskFactory.StartNew(() =>
                     {
                         try
@@ -79,6 +81,9 @@ namespace P2PSocket.Server
                                 {
                                     Global_Func.ListenTcp<RecievePacket>(tcpClient);
                                 });
+                                var endPoint = socket.RemoteEndPoint as IPEndPoint;
+                                ConsoleUtils.Write($"已连接客户端{endPoint.Address.ToString()}:{endPoint.Port}");
+
                             }
                         }
                         catch (Exception ex)

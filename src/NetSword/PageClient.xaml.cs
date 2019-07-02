@@ -33,6 +33,8 @@ namespace NetSword
 
         private void StartBtnClick(object sender, RoutedEventArgs e)
         {
+           IsEnabled = false;
+            (Window.GetWindow(this) as MainWindow).ServerStarted();
             P2PSocket.Client.CoreModule core = new P2PSocket.Client.CoreModule();
             foreach (var map in Config.Maps)
             {
@@ -45,19 +47,27 @@ namespace NetSword
                     map.MapType = PortMapType.servername;
                 }
             }
-            core.Start(Config.ServerIP,Config.ServerPort,Config.ClientName,Config.AllowPorts.Select(p=>p.Port).ToArray(),Config.Maps.ToArray());
-
+            core.Start(Config.ServerIP, Config.ServerPort, Config.ClientName, Config.AllowPorts.Select(p => p.Port).ToArray(), Config.Maps.ToArray());
+            Config.Save();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if((sender as Button).Tag.Equals("0"))
+            if ((sender as Button).Tag.Equals("0"))
             {
                 Config.Maps.Add(new PortMapItem());
             }
             else
             {
                 Config.AllowPorts.Add(new PortInfo());
+            }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(App.IsStartup)
+            {
+                StartBtnClick(null, null);
             }
         }
     }

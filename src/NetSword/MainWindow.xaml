@@ -5,11 +5,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      
+      Loaded="ExtendedWindow_Loaded"
   xmlns:local="clr-namespace:NetSword"
         xmlns:flat="clr-namespace:FzLib.Control.FlatStyle;assembly=FzWpfControlLib"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="内网端口转发" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -22,9 +22,19 @@
                 <ColumnDefinition Width="8"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Frame x:Name="frm" Source="PageServer.xaml" NavigationUIVisibility="Hidden"/>
+            <Frame x:Name="frm"  NavigationUIVisibility="Hidden"/>
             <flat:ListBox ItemsSource="{Binding Logs}" Grid.Column="2"/>
-            <flat:Button Grid.Row="2" Click="Button_Click">作为客户端</flat:Button>
+            <flat:Button x:Name="btnSwitch" Grid.Row="2" Click="Button_Click">作为客户端</flat:Button>
+            <Grid Grid.Row="2" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <flat:Button  Click="Button_Click_1">重置</flat:Button>
+                <flat:Button x:Name="btnStartup" Grid.Column="2" Click="Button_Click_2">开机自启</flat:Button>
+
+            </Grid>
         </Grid>
     </Grid>
 </extension:ExtendedWindow>

@@ -30,8 +30,19 @@ namespace NetSword
 
         private void StartBtnClick(object sender, RoutedEventArgs e)
         {
+            IsEnabled = false;
+            (Window.GetWindow(this) as MainWindow).ServerStarted();
+
             P2PSocket.Server.CoreModule core = new P2PSocket.Server.CoreModule();
             core.Start(Config.Port,null);
+            Config.Save();
+        }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (App.IsStartup)
+            {
+                StartBtnClick(null, null);
+            }
         }
     }
 }
